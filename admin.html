@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel - खबर नेपाली सेवा</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,"Noto Sans Devanagari",sans-serif;
+  background:#f4f6f8;
+  color:#222;
+}
+
+header{
+  background:#087f3f;
+  color:white;
+  padding:18px 25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+header h1{
+  margin:0;
+  font-size:24px;
+}
+
+header button{
+  background:#fff;
+  color:#087f3f;
+  border:0;
+  padding:10px 18px;
+  border-radius:6px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.container{
+  max-width:1000px;
+  margin:30px auto;
+  padding:0 15px;
+}
+
+.box{
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 2px 12px rgba(0,0,0,.08);
+  margin-bottom:25px;
+}
+
+h2{
+  margin-top:0;
+  color:#087f3f;
+}
+
+label{
+  display:block;
+  margin-top:18px;
+  margin-bottom:7px;
+  font-weight:bold;
+}
+
+input,
+select,
+textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #ccc;
+  border-radius:7px;
+  font-size:16px;
+}
+
+textarea{
+  min-height:220px;
+  resize:vertical;
+}
+
+button.primary{
+  margin-top:22px;
+  background:#087f3f;
+  color:white;
+  border:0;
+  padding:14px 25px;
+  border-radius:7px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button.primary:hover{
+  background:#056632;
+}
+
+.login{
+  max-width:450px;
+  margin:80px auto;
+}
+
+.message{
+  margin-top:15px;
+  padding:12px;
+  border-radius:6px;
+  display:none;
+}
+
+.success{
+  background:#d9f7e5;
+  color:#126b35;
+}
+
+.error{
+  background:#ffe1e1;
+  color:#a00000;
+}
+
+.preview{
+  margin-top:15px;
+  max-width:300px;
+  border-radius:8px;
+  display:none;
+}
+
+.hidden{
+  display:none;
+}
+
+.news-item{
+  border:1px solid #ddd;
+  padding:15px;
+  border-radius:8px;
+  margin-top:12px;
+}
+
+.news-item h3{
+  margin:0 0 8px;
+}
+
+.small{
+  color:#777;
+  font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<div id="loginBox" class="login box">
+
+  <h2>🔐 Admin Login</h2>
+
+  <label>इमेल</label>
+  <input
+    type="email"
+    id="email"
+    placeholder="Admin Email"
+  >
+
+  <label>Password</label>
+  <input
+    type="password"
+    id="password"
+    placeholder="Password"
+  >
+
+  <button class="primary" onclick="login()">
+    Login
+  </button>
+
+  <div id="loginMessage" class="message"></div>
+
+</div>
+
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel" class="hidden">
+
+<header>
+  <h1>📰 खबर नेपाली सेवा — Admin Panel</h1>
+  <button onclick="logout()">Logout</button>
+</header>
+
+<div class="container">
+
+<div class="box">
+
+<h2>📝 नयाँ समाचार लेख्नुहोस्</h2>
+
+<label>समाचार शीर्षक *</label>
+
+<input
+  type="text"
+  id="title"
+  placeholder="समाचारको मुख्य शीर्षक लेख्नुहोस्"
+>
+
+
+<label>श्रेणी *</label>
+
+<select id="category">
+
+<option value="">श्रेणी छान्नुहोस्</option>
+<option value="समाचार">समाचार</option>
+<option value="राजनीति">राजनीति</option>
+<option value="बजार अर्थतन्त्र">बजार अर्थतन्त्र</option>
+<option value="समाज">समाज</option>
+<option value="कला">कला</option>
+<option value="खेलकुद">खेलकुद</option>
+<option value="प्रविधि">प्रविधि</option>
+<option value="ग्लोबल">ग्लोबल</option>
+<option value="फिचर">फिचर</option>
+
+</select>
+
+
+<label>समाचारको फोटो *</label>
+
+<input
+  type="file"
+  id="image"
+  accept="image/*"
+  onchange="previewImage(event)"
+>
+
+<img
+  id="preview"
+  class="preview"
+>
+
+
+<label>समाचार लेख *</label>
+
+<textarea
+  id="content"
+  placeholder="यहाँ पूरा समाचार लेख्नुहोस्..."
+></textarea>
+
+
+<label>लेखक</label>
+
+<input
+  type="text"
+  id="author"
+  value="खबर नेपाली सेवा"
+>
+
+
+<button
+  class="primary"
+  onclick="publishNews()"
+>
+🚀 समाचार Publish गर्नुहोस्
+</button>
+
+<div id="publishMessage" class="message"></div>
+
+</div>
+
+
+<!-- PUBLISHED NEWS -->
+
+<div class="box">
+
+<h2>📰 प्रकाशित समाचार</h2>
+
+<div id="newsList">
+समाचारहरू लोड हुँदैछ...
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* ============================
+   SUPABASE CONFIG
+============================ */
+
+const SUPABASE_URL =
+"https://wrilgmjnoyqvwaohljut.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_Xd-dyWiHHjnd9bbE1sZuxw_TRYuX4H3";
+
+const supabaseClient =
+supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+
+/* ============================
+   LOGIN
+============================ */
+
+async function login(){
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const password =
+    document.getElementById("password").value;
+
+  const msg =
+    document.getElementById("loginMessage");
+
+  msg.style.display="none";
+
+  if(!email || !password){
+
+    showMessage(
+      msg,
+      "इमेल र password दुवै राख्नुहोस्।",
+      false
+    );
+
+    return;
+  }
+
+  const { data, error } =
+    await supabaseClient.auth.signInWithPassword({
+      email:email,
+      password:password
+    });
+
+  if(error){
+
+    showMessage(
+      msg,
+      "Login असफल भयो: " + error.message,
+      false
+    );
+
+    return;
+  }
+
+  document.getElementById("loginBox")
+    .classList.add("hidden");
+
+  document.getElementById("adminPanel")
+    .classList.remove("hidden");
+
+  loadNews();
+}
+
+
+/* ============================
+   LOGOUT
+============================ */
+
+async function logout(){
+
+  await supabaseClient.auth.signOut();
+
+  location.reload();
+
+}
+
+
+/* ============================
+   CHECK LOGIN
+============================ */
+
+async function checkUser(){
+
+  const {
+    data:{
+      session
+    }
+  } =
+    await supabaseClient.auth.getSession();
+
+  if(session){
+
+    document.getElementById("loginBox")
+      .classList.add("hidden");
+
+    document.getElementById("adminPanel")
+      .classList.remove("hidden");
+
+    loadNews();
+  }
+
+}
+
+
+/* ============================
+   IMAGE PREVIEW
+============================ */
+
+function previewImage(event){
+
+  const file =
+    event.target.files[0];
+
+  const preview =
+    document.getElementById("preview");
+
+  if(!file){
+
+    preview.style.display="none";
+    return;
+  }
+
+  preview.src =
+    URL.createObjectURL(file);
+
+  preview.style.display="block";
+}
+
+
+/* ============================
+   PUBLISH NEWS
+============================ */
+
+async function publishNews(){
+
+  const title =
+    document.getElementById("title")
+    .value.trim();
+
+  const category =
+    document.getElementById("category")
+    .value;
+
+  const content =
+    document.getElementById("content")
+    .value.trim();
+
+  const author =
+    document.getElementById("author")
+    .value.trim();
+
+  const imageFile =
+    document.getElementById("image")
+    .files[0];
+
+  const msg =
+    document.getElementById("publishMessage");
+
+
+  if(!title){
+
+    showMessage(
+      msg,
+      "समाचारको शीर्षक लेख्नुहोस्।",
+      false
+    );
+
+    return;
+  }
+
+  if(!category){
+
+    showMessage(
+      msg,
+      "श्रेणी छान्नुहोस्।",
+      false
+    );
+
+    return;
+  }
+
+  if(!imageFile){
+
+    showMessage(
+      msg,
+      "समाचारको फोटो छान्नुहोस्।",
+      false
+    );
+
+    return;
+  }
+
+  if(!content){
+
+    showMessage(
+      msg,
+      "समाचार लेख्नुहोस्।",
+      false
+    );
+
+    return;
+  }
+
+
+  showMessage(
+    msg,
+    "समाचार Publish हुँदैछ...",
+    true
+  );
+
+
+  /* IMAGE FILE NAME */
+
+  const extension =
+    imageFile.name
+      .split(".")
+      .pop();
+
+  const fileName =
+    Date.now() +
+    "-" +
+    Math.random()
+      .toString(36)
+      .substring(2) +
+    "." +
+    extension;
+
+
+  /* UPLOAD IMAGE */
+
+  const {
+    data:uploadData,
+    error:uploadError
+  } =
+    await supabaseClient
+      .storage
+      .from("news-images")
+      .upload(
+        fileName,
+        imageFile,
+        {
+          cacheControl:"3600",
+          upsert:false
+        }
+      );
+
+
+  if(uploadError){
+
+    showMessage(
+      msg,
+      "फोटो upload भएन: " +
+      uploadError.message,
+      false
+    );
+
+    return;
+  }
+
+
+  /* IMAGE URL */
+
+  const {
+    data:imageData
+  } =
+    supabaseClient
+      .storage
+      .from("news-images")
+      .getPublicUrl(fileName);
+
+
+  const imageUrl =
+    imageData.publicUrl;
+
+
+  /* INSERT NEWS */
+
+  const {
+    error:insertError
+  } =
+    await supabaseClient
+      .from("news")
+      .insert([{
+
+        title:title,
+
+        category:category,
+
+        image_url:imageUrl,
+
+        content:content,
+
+        author:author || "खबर नेपाली सेवा",
+
+        published:true
+
+      }]);
+
+
+  if(insertError){
+
+    showMessage(
+      msg,
+      "समाचार save भएन: " +
+      insertError.message,
+      false
+    );
+
+    return;
+  }
+
+
+  /* SUCCESS */
+
+  showMessage(
+    msg,
+    "🎉 समाचार सफलतापूर्वक Publish भयो!",
+    true
+  );
+
+
+  document.getElementById("title")
+    .value="";
+
+  document.getElementById("category")
+    .value="";
+
+  document.getElementById("content")
+    .value="";
+
+  document.getElementById("image")
+    .value="";
+
+  document.getElementById("preview")
+    .style.display="none";
+
+
+  loadNews();
+
+}
+
+
+/* ============================
+   LOAD NEWS
+============================ */
+
+async function loadNews(){
+
+  const list =
+    document.getElementById("newsList");
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from("news")
+      .select("*")
+      .eq("published",true)
+      .order("created_at",{ascending:false});
+
+
+  if(error){
+
+    list.innerHTML =
+      "<p>समाचार लोड हुन सकेन।</p>";
+
+    return;
+  }
+
+
+  if(!data || data.length===0){
+
+    list.innerHTML =
+      "<p>अहिलेसम्म कुनै समाचार प्रकाशित भएको छैन।</p>";
+
+    return;
+  }
+
+
+  list.innerHTML =
+    data.map(news => `
+
+      <div class="news-item">
+
+        <h3>${escapeHtml(news.title)}</h3>
+
+        <div class="small">
+          ${escapeHtml(news.category)}
+          ·
+          ${escapeHtml(news.author || "")}
+        </div>
+
+        <p>
+          ${escapeHtml(
+            news.content.substring(0,180)
+          )}...
+        </p>
+
+      </div>
+
+    `).join("");
+
+}
+
+
+/* ============================
+   MESSAGE
+============================ */
+
+function showMessage(
+  element,
+  message,
+  success
+){
+
+  element.innerText =
+    message;
+
+  element.className =
+    "message " +
+    (success ? "success" : "error");
+
+  element.style.display =
+    "block";
+}
+
+
+/* ============================
+   SECURITY
+============================ */
+
+function escapeHtml(text){
+
+  return String(text || "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+
+/* START */
+
+checkUser();
+
+</script>
+
+</body>
+</html>
