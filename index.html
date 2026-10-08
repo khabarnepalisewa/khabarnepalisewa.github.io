@@ -526,40 +526,119 @@ footer a{
 
 <script>
 
-/* DATE */
-function showDate(){
+/* NEPALI DATE + LIVE TIME */
 
-    const now = new Date();
+const nepaliMonths = [
+    "बैशाख",
+    "जेठ",
+    "असार",
+    "श्रावण",
+    "भदौ",
+    "असोज",
+    "कात्तिक",
+    "मंसिर",
+    "पुस",
+    "माघ",
+    "फागुन",
+    "चैत"
+];
 
-    const options = {
-        year:"numeric",
-        month:"long",
-        day:"numeric"
-    };
+const nepaliDays = [
+    "आइतबार",
+    "सोमबार",
+    "मंगलबार",
+    "बुधबार",
+    "बिहीबार",
+    "शुक्रबार",
+    "शनिबार"
+];
 
-    document.getElementById("today").innerText =
-        now.toLocaleDateString("ne-NP",options);
+const nepaliNumbers = {
+    "0":"०",
+    "1":"१",
+    "2":"२",
+    "3":"३",
+    "4":"४",
+    "5":"५",
+    "6":"६",
+    "7":"७",
+    "8":"८",
+    "9":"९"
+};
+
+function nepaliNumber(number){
+
+    return String(number)
+        .split("")
+        .map(n => nepaliNumbers[n] || n)
+        .join("");
 
 }
 
-showDate();
+
+function showNepaliDate(){
+
+    const today = new Date();
+
+    const bs =
+        new NepaliDate(today);
+
+    const year =
+        bs.getYear();
+
+    const month =
+        bs.getMonth();
+
+    const day =
+        bs.getDate();
+
+    const weekDay =
+        today.getDay();
+
+    document.getElementById("today").innerHTML =
+
+        "वि.सं. " +
+        nepaliNumber(year) +
+        " " +
+        nepaliMonths[month] +
+        " " +
+        nepaliNumber(day) +
+        " गते, " +
+        nepaliDays[weekDay];
+
+}
 
 
-/* CLOCK */
 function showClock(){
 
     const now = new Date();
 
-    document.getElementById("clock").innerText =
-        now.toLocaleTimeString("ne-NP");
+    const hours =
+        String(now.getHours()).padStart(2,"0");
+
+    const minutes =
+        String(now.getMinutes()).padStart(2,"0");
+
+    const seconds =
+        String(now.getSeconds()).padStart(2,"0");
+
+    document.getElementById("clock").innerHTML =
+
+        "🕐 " +
+        nepaliNumber(hours) +
+        ":" +
+        nepaliNumber(minutes) +
+        ":" +
+        nepaliNumber(seconds);
 
 }
+
+
+showNepaliDate();
 
 showClock();
 
 setInterval(showClock,1000);
-
-
 /* IMAGE */
 const images = [
 "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
