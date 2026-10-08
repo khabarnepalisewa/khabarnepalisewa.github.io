@@ -31,7 +31,7 @@ a{
     margin:auto;
 }
 
-/* TOP BAR */
+/* TOP */
 .topbar{
     background:#f5f5f5;
     border-bottom:1px solid #ddd;
@@ -47,30 +47,29 @@ a{
 
 .top-links{
     display:flex;
-    gap:15px;
+    gap:18px;
 }
 
 .top-links a:hover{
-    color:#07823b;
+    color:#087b3e;
 }
 
 /* HEADER */
 header{
-    background:white;
-    padding:20px 0;
+    background:#fff;
+    padding:18px 0;
 }
 
 .header-main{
     display:flex;
-    align-items:center;
     justify-content:space-between;
-    gap:20px;
+    align-items:center;
 }
 
 .logo{
-    font-size:42px;
+    font-size:43px;
     font-weight:900;
-    color:#07823b;
+    color:#087b3e;
 }
 
 .logo span{
@@ -80,27 +79,28 @@ header{
 .tagline{
     color:#1472b8;
     font-size:15px;
-    margin-top:-8px;
+    margin-top:-5px;
 }
 
 .header-right{
     text-align:right;
-}
-
-.date{
-    color:#666;
     font-size:14px;
 }
 
-/* NAVIGATION */
+.live-time{
+    color:#d71920;
+    font-weight:bold;
+    margin-top:5px;
+}
+
+/* NAV */
 nav{
     background:#087b3e;
-    color:white;
+    color:#fff;
 }
 
 .nav-menu{
     display:flex;
-    align-items:center;
     flex-wrap:wrap;
 }
 
@@ -117,8 +117,8 @@ nav{
 
 /* BREAKING */
 .breaking{
-    border-bottom:1px solid #ddd;
     background:#fafafa;
+    border-bottom:1px solid #ddd;
 }
 
 .breaking-inner{
@@ -131,12 +131,10 @@ nav{
     color:white;
     padding:8px 15px;
     font-weight:bold;
-    white-space:nowrap;
 }
 
 .breaking-text{
     padding-left:15px;
-    color:#333;
 }
 
 /* PAGE */
@@ -151,28 +149,49 @@ nav{
     font-size:30px;
 }
 
+/* SEARCH */
+.search-box{
+    display:flex;
+    margin-bottom:22px;
+}
+
+.search-box input{
+    width:100%;
+    padding:13px;
+    border:1px solid #ccc;
+    font-size:16px;
+}
+
+.search-box button{
+    background:#087b3e;
+    color:#fff;
+    border:0;
+    padding:0 20px;
+    font-size:17px;
+    cursor:pointer;
+}
+
 /* HERO */
 .hero{
     display:grid;
     grid-template-columns:2fr 1fr;
     gap:20px;
-    margin-bottom:25px;
 }
 
 .hero-main{
-    min-height:300px;
-    background:linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.75)),
-    url("https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80")
-    center/cover;
+    min-height:320px;
+    padding:25px;
     display:flex;
     align-items:end;
-    padding:25px;
-    color:white;
+    color:#fff;
+    background:
+    linear-gradient(rgba(0,0,0,.1),rgba(0,0,0,.78)),
+    url("https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80")
+    center/cover;
 }
 
 .hero-main h1{
     font-size:32px;
-    line-height:1.4;
 }
 
 .hero-side{
@@ -183,7 +202,7 @@ nav{
 
 .side-card{
     border:1px solid #ddd;
-    padding:15px;
+    padding:18px;
     background:#fff;
 }
 
@@ -191,19 +210,25 @@ nav{
     color:#087b3e;
 }
 
-/* AD */
-.ad{
-    background:#f1f1f1;
-    border:1px dashed #aaa;
-    min-height:100px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#777;
-    margin:25px 0;
+.category{
+    color:#d71920;
+    font-size:13px;
+    font-weight:bold;
 }
 
-/* CARDS */
+/* AD */
+.ad{
+    height:100px;
+    margin:25px 0;
+    border:1px dashed #aaa;
+    background:#f5f5f5;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#777;
+}
+
+/* SECTION */
 .section-title{
     border-bottom:3px solid #087b3e;
     padding-bottom:7px;
@@ -211,6 +236,7 @@ nav{
     font-size:25px;
 }
 
+/* CARDS */
 .cards{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -219,18 +245,19 @@ nav{
 
 .card{
     border:1px solid #ddd;
-    background:white;
+    background:#fff;
     transition:.2s;
 }
 
 .card:hover{
+    transform:translateY(-3px);
     box-shadow:0 5px 15px rgba(0,0,0,.12);
-    transform:translateY(-2px);
 }
 
 .card-img{
     height:170px;
-    background:#ddd center/cover;
+    background-position:center;
+    background-size:cover;
 }
 
 .card-content{
@@ -239,17 +266,9 @@ nav{
 
 .card-content h3{
     font-size:19px;
-    line-height:1.5;
 }
 
-.category{
-    color:#d71920;
-    font-size:13px;
-    font-weight:bold;
-    margin-bottom:5px;
-}
-
-/* NEWS LIST */
+/* NEWS */
 .news-list{
     display:grid;
     grid-template-columns:2fr 1fr;
@@ -259,19 +278,15 @@ nav{
 .news-item{
     display:flex;
     gap:15px;
-    border-bottom:1px solid #ddd;
     padding:15px 0;
+    border-bottom:1px solid #ddd;
 }
 
 .news-thumb{
     width:150px;
     height:100px;
     flex-shrink:0;
-    background:#ddd center/cover;
-}
-
-.news-item h3{
-    font-size:18px;
+    background:center/cover;
 }
 
 /* POPULAR */
@@ -291,32 +306,10 @@ nav{
     border-bottom:1px solid #ddd;
 }
 
-/* SEARCH */
-.search-box{
-    display:flex;
-    margin-bottom:20px;
-}
-
-.search-box input{
-    width:100%;
-    padding:13px;
-    border:1px solid #ccc;
-    font-size:16px;
-}
-
-.search-box button{
-    background:#087b3e;
-    color:white;
-    border:0;
-    padding:0 20px;
-    font-size:18px;
-}
-
 /* FOOTER */
 footer{
     background:#111;
-    color:white;
-    margin-top:40px;
+    color:#fff;
     padding:35px 0 15px;
 }
 
@@ -324,11 +317,6 @@ footer{
     display:grid;
     grid-template-columns:2fr 1fr 1fr;
     gap:30px;
-}
-
-footer h3{
-    color:#fff;
-    margin-bottom:12px;
 }
 
 footer a{
@@ -348,22 +336,18 @@ footer a{
 /* MOBILE */
 @media(max-width:800px){
 
-    .logo{
-        font-size:30px;
-    }
-
     .header-main{
         flex-direction:column;
         align-items:flex-start;
+        gap:10px;
+    }
+
+    .logo{
+        font-size:31px;
     }
 
     .header-right{
         text-align:left;
-    }
-
-    .nav-menu a{
-        padding:9px 10px;
-        font-size:14px;
     }
 
     .hero{
@@ -382,25 +366,31 @@ footer a{
         grid-template-columns:1fr;
     }
 
-    .breaking-inner{
-        display:block;
+    .nav-menu a{
+        font-size:14px;
+        padding:9px 10px;
     }
 
-    .breaking-title{
-        display:inline-block;
+    .hero-main h1{
+        font-size:25px;
+    }
+
+    .breaking-inner{
+        display:block;
     }
 }
 </style>
 </head>
 
+
 <body>
 
-<!-- TOP BAR -->
+<!-- TOP DATE -->
 <div class="topbar">
 <div class="container">
 
 <div>
-आजको मिति: <span id="today"></span>
+📅 <span id="today"></span>
 </div>
 
 <div class="top-links">
@@ -427,43 +417,41 @@ footer a{
 </div>
 
 <div class="header-right">
-<div>🔴 YouTube &nbsp; | &nbsp; 🔵 Facebook</div>
-<div class="date" id="clock"></div>
+
+<div>
+🔴 YouTube &nbsp; | &nbsp; 🔵 Facebook
+</div>
+
+<div class="live-time">
+🕐 <span id="clock"></span>
+</div>
+
 </div>
 
 </div>
 </header>
 
 
-<!-- NAVIGATION -->
+<!-- MENU -->
 <nav>
 <div class="container nav-menu">
 
 <a href="?page=home" data-page="home">गृहपृष्ठ</a>
-
 <a href="?page=feature" data-page="feature">फिचर</a>
-
 <a href="?page=news" data-page="news">समाचार</a>
-
 <a href="?page=politics" data-page="politics">राजनीति</a>
-
 <a href="?page=economy" data-page="economy">बजार अर्थतन्त्र</a>
-
 <a href="?page=society" data-page="society">समाज</a>
-
 <a href="?page=culture" data-page="culture">कला</a>
-
 <a href="?page=sports" data-page="sports">खेलकुद</a>
-
 <a href="?page=technology" data-page="technology">प्रविधि</a>
-
 <a href="?page=global" data-page="global">ग्लोबल</a>
 
 </div>
 </nav>
 
 
-<!-- BREAKING NEWS -->
+<!-- BREAKING -->
 <div class="breaking">
 <div class="container breaking-inner">
 
@@ -472,16 +460,15 @@ footer a{
 </div>
 
 <div class="breaking-text">
-नेपालका विभिन्न स्थानबाट आजका प्रमुख समाचारहरू...
+खबर नेपाली सेवाका पछिल्ला तथा महत्वपूर्ण समाचारहरू...
 </div>
 
 </div>
 </div>
 
 
-<!-- MAIN CONTENT -->
-<main class="container page" id="content">
-</main>
+<!-- CONTENT -->
+<main class="container page" id="content"></main>
 
 
 <!-- FOOTER -->
@@ -493,8 +480,8 @@ footer a{
 <h3>खबर नेपाली सेवा</h3>
 
 <p>
-सत्य, तथ्य र निष्पक्ष समाचार सम्प्रेषण गर्ने
-डिजिटल नेपाली समाचार पोर्टल।
+सत्य, तथ्य र निष्पक्ष समाचार जनतासम्म
+पुर्‍याउने डिजिटल नेपाली समाचार पोर्टल।
 </p>
 </div>
 
@@ -508,7 +495,7 @@ footer a{
 </div>
 
 <div>
-<h3>हामीलाई फलो गर्नुहोस्</h3>
+<h3>सामाजिक सञ्जाल</h3>
 
 <a href="#">Facebook</a>
 <a href="#">YouTube</a>
@@ -526,9 +513,30 @@ footer a{
 
 <script>
 
-/* NEPALI DATE + LIVE TIME */
+/* =====================================
+   नेपाली अंक
+===================================== */
 
-const nepaliMonths = [
+const NP = [
+    "०","१","२","३","४",
+    "५","६","७","८","९"
+];
+
+function nepaliNumber(value){
+
+    return String(value)
+    .split("")
+    .map(x => NP[x] || x)
+    .join("");
+
+}
+
+
+/* =====================================
+   नेपाली मिति
+===================================== */
+
+const bsMonths = [
     "बैशाख",
     "जेठ",
     "असार",
@@ -543,7 +551,7 @@ const nepaliMonths = [
     "चैत"
 ];
 
-const nepaliDays = [
+const bsDays = [
     "आइतबार",
     "सोमबार",
     "मंगलबार",
@@ -553,303 +561,291 @@ const nepaliDays = [
     "शनिबार"
 ];
 
-const nepaliNumbers = {
-    "0":"०",
-    "1":"१",
-    "2":"२",
-    "3":"३",
-    "4":"४",
-    "5":"५",
-    "6":"६",
-    "7":"७",
-    "8":"८",
-    "9":"९"
-};
 
-function nepaliNumber(number){
+/*
+आजको आधार:
 
-    return String(number)
-        .split("")
-        .map(n => nepaliNumbers[n] || n)
-        .join("");
+२०२६ अक्टोबर ८
+=
+२०८३ असोज २२
+*/
 
-}
+function showDate(){
 
+    const now = new Date();
 
-function showNepaliDate(){
+    const base =
+        new Date("2026-10-08T00:00:00");
 
-    const today = new Date();
+    const difference =
+        Math.floor(
+            (now - base) /
+            (1000 * 60 * 60 * 24)
+        );
 
-    const bs =
-        new NepaliDate(today);
+    let year = 2083;
+    let month = 5;
+    let day = 22 + difference;
 
-    const year =
-        bs.getYear();
+    const daysInMonth = [
+        31,32,31,32,
+        31,30,30,30,
+        29,30,29,31
+    ];
 
-    const month =
-        bs.getMonth();
+    while(day > daysInMonth[month]){
 
-    const day =
-        bs.getDate();
+        day -= daysInMonth[month];
 
-    const weekDay =
-        today.getDay();
+        month++;
+
+        if(month >= 12){
+
+            month = 0;
+            year++;
+
+        }
+
+    }
+
+    while(day < 1){
+
+        month--;
+
+        if(month < 0){
+
+            month = 11;
+            year--;
+
+        }
+
+        day += daysInMonth[month];
+
+    }
+
+    const weekday =
+        now.getDay();
 
     document.getElementById("today").innerHTML =
 
         "वि.सं. " +
         nepaliNumber(year) +
         " " +
-        nepaliMonths[month] +
+        bsMonths[month] +
         " " +
         nepaliNumber(day) +
         " गते, " +
-        nepaliDays[weekDay];
+        bsDays[weekday];
 
 }
 
+
+/* =====================================
+   LIVE CLOCK
+===================================== */
 
 function showClock(){
 
     const now = new Date();
 
-    const hours =
-        String(now.getHours()).padStart(2,"0");
-
-    const minutes =
-        String(now.getMinutes()).padStart(2,"0");
-
-    const seconds =
-        String(now.getSeconds()).padStart(2,"0");
+    let h = now.getHours();
+    let m = now.getMinutes();
+    let s = now.getSeconds();
 
     document.getElementById("clock").innerHTML =
 
-        "🕐 " +
-        nepaliNumber(hours) +
-        ":" +
-        nepaliNumber(minutes) +
-        ":" +
-        nepaliNumber(seconds);
+        nepaliNumber(
+            String(h).padStart(2,"0")
+        )
+        + ":" +
+
+        nepaliNumber(
+            String(m).padStart(2,"0")
+        )
+        + ":" +
+
+        nepaliNumber(
+            String(s).padStart(2,"0")
+        );
 
 }
 
-
-showNepaliDate();
-
+showDate();
 showClock();
 
 setInterval(showClock,1000);
-/* IMAGE */
+
+
+/* =====================================
+   IMAGES
+===================================== */
+
 const images = [
-"https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80",
 
-"https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=800&q=80",
+"https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=900&q=80",
 
-"https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=800&q=80",
+"https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=900&q=80",
 
-"https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800&q=80",
+"https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=900&q=80",
 
-"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
+"https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=900&q=80",
 
-"https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80"
+"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80",
+
+"https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=80"
+
 ];
 
 
-/* PAGE DATA */
+/* =====================================
+   PAGE DATA
+===================================== */
 
 const pages = {
 
 home:{
-
 title:"गृहपृष्ठ",
-
-hero:"नेपालमा पछिल्लो समयका प्रमुख राजनीतिक तथा सामाजिक घटनाक्रम",
-
+hero:"नेपालमा पछिल्लो समयका प्रमुख समाचार तथा घटनाक्रम",
 cards:[
-["समाचार","देशभरका प्रमुख समाचारहरू एकै ठाउँमा","news"],
-["राजनीति","नेपालको राजनीतिक गतिविधिको पछिल्लो अपडेट","politics"],
-["बजार अर्थतन्त्र","बजार तथा अर्थतन्त्रका महत्वपूर्ण जानकारी","economy"]
+["समाचार","देशभरका प्रमुख समाचारहरू एकै ठाउँमा"],
+["राजनीति","नेपालको राजनीतिक गतिविधिको पछिल्लो अपडेट"],
+["बजार अर्थतन्त्र","बजार तथा अर्थतन्त्रका महत्वपूर्ण जानकारी"]
 ]
-
 },
 
 feature:{
-
 title:"फिचर",
-
 hero:"समसामयिक विषयमा विशेष रिपोर्ट तथा खोजमूलक सामग्री",
-
 cards:[
-["विशेष रिपोर्ट","समाजमा प्रभाव पारिरहेका विषयमाथि विशेष रिपोर्ट","feature"],
-["खोज पत्रकारिता","महत्वपूर्ण विषयमा खोजमूलक समाचार","feature"],
-["विशेष अन्तर्वार्ता","समसामयिक विषयमा विज्ञसँग कुराकानी","feature"]
+["विशेष रिपोर्ट","समाजमा प्रभाव पारिरहेका विषयमाथि विशेष रिपोर्ट"],
+["खोज पत्रकारिता","महत्वपूर्ण विषयमा खोजमूलक समाचार"],
+["अन्तर्वार्ता","समसामयिक विषयमा विज्ञसँग कुराकानी"]
 ]
-
 },
 
 news:{
-
 title:"समाचार",
-
 hero:"नेपालका प्रमुख समाचार तथा पछिल्ला घटनाक्रम",
-
 cards:[
-["राष्ट्रिय समाचार","देशभरका महत्वपूर्ण गतिविधि","news"],
-["प्रदेश समाचार","प्रदेशस्तरका पछिल्ला समाचार","news"],
-["स्थानीय समाचार","स्थानीय तहका प्रमुख गतिविधि","news"]
+["राष्ट्रिय समाचार","देशभरका महत्वपूर्ण गतिविधि"],
+["प्रदेश समाचार","प्रदेशस्तरका पछिल्ला समाचार"],
+["स्थानीय समाचार","स्थानीय तहका प्रमुख गतिविधि"]
 ]
-
 },
 
 politics:{
-
 title:"राजनीति",
-
 hero:"नेपालको राजनीति र राजनीतिक गतिविधिका पछिल्ला समाचार",
-
 cards:[
-["सरकार","सरकारका निर्णय तथा गतिविधि","politics"],
-["दलहरू","राजनीतिक दलका गतिविधि","politics"],
-["संसद","संसदका महत्वपूर्ण गतिविधि","politics"]
+["सरकार","सरकारका निर्णय तथा गतिविधि"],
+["राजनीतिक दल","राजनीतिक दलका गतिविधि"],
+["संसद","संसदका महत्वपूर्ण गतिविधि"]
 ]
-
 },
 
 economy:{
-
 title:"बजार अर्थतन्त्र",
-
 hero:"नेपालको बजार, व्यापार तथा अर्थतन्त्रका पछिल्ला गतिविधि",
-
 cards:[
-["बजार","बजारमा भइरहेको पछिल्लो गतिविधि","economy"],
-["बैंक तथा वित्त","बैंकिङ तथा वित्तीय क्षेत्रका समाचार","economy"],
-["व्यापार","व्यापार तथा व्यवसायका महत्वपूर्ण जानकारी","economy"]
+["बजार","बजारमा भइरहेको पछिल्लो गतिविधि"],
+["बैंक तथा वित्त","बैंकिङ तथा वित्तीय क्षेत्रका समाचार"],
+["व्यापार","व्यापार तथा व्यवसायका महत्वपूर्ण जानकारी"]
 ]
-
 },
 
 society:{
-
 title:"समाज",
-
 hero:"समाज र जनजीवनसँग सम्बन्धित महत्वपूर्ण समाचार",
-
 cards:[
-["शिक्षा","शिक्षा क्षेत्रका पछिल्ला गतिविधि","society"],
-["स्वास्थ्य","स्वास्थ्य क्षेत्रका महत्वपूर्ण जानकारी","society"],
-["समुदाय","समुदाय तथा जनजीवनका समाचार","society"]
+["शिक्षा","शिक्षा क्षेत्रका पछिल्ला गतिविधि"],
+["स्वास्थ्य","स्वास्थ्य क्षेत्रका महत्वपूर्ण जानकारी"],
+["समुदाय","समुदाय तथा जनजीवनका समाचार"]
 ]
-
 },
 
 culture:{
-
 title:"कला",
-
 hero:"नेपाली कला, संस्कृति, साहित्य तथा मनोरञ्जन",
-
 cards:[
-["साहित्य","नेपाली साहित्यका नयाँ गतिविधि","culture"],
-["कला संस्कृति","कला तथा संस्कृतिका समाचार","culture"],
-["मनोरञ्जन","मनोरञ्जन क्षेत्रका नयाँ गतिविधि","culture"]
+["साहित्य","नेपाली साहित्यका नयाँ गतिविधि"],
+["कला संस्कृति","कला तथा संस्कृतिका समाचार"],
+["मनोरञ्जन","मनोरञ्जन क्षेत्रका नयाँ गतिविधि"]
 ]
-
 },
 
 sports:{
-
 title:"खेलकुद",
-
 hero:"नेपाल तथा विश्व खेलकुदका पछिल्ला समाचार",
-
 cards:[
-["फुटबल","फुटबलका पछिल्ला गतिविधि","sports"],
-["क्रिकेट","क्रिकेटका महत्वपूर्ण समाचार","sports"],
-["अन्य खेल","विभिन्न खेलकुदका समाचार","sports"]
+["फुटबल","फुटबलका पछिल्ला गतिविधि"],
+["क्रिकेट","क्रिकेटका महत्वपूर्ण समाचार"],
+["अन्य खेल","विभिन्न खेलकुदका समाचार"]
 ]
-
 },
 
 technology:{
-
 title:"प्रविधि",
-
 hero:"प्रविधि, मोबाइल, इन्टरनेट तथा डिजिटल संसारका समाचार",
-
 cards:[
-["मोबाइल","स्मार्टफोन तथा मोबाइल प्रविधि","technology"],
-["इन्टरनेट","इन्टरनेट तथा डिजिटल सेवाका अपडेट","technology"],
-["AI","कृत्रिम बुद्धिमत्ता तथा नयाँ प्रविधि","technology"]
+["मोबाइल","स्मार्टफोन तथा मोबाइल प्रविधि"],
+["इन्टरनेट","इन्टरनेट तथा डिजिटल सेवाका अपडेट"],
+["AI","कृत्रिम बुद्धिमत्ता तथा नयाँ प्रविधि"]
 ]
-
 },
 
 global:{
-
 title:"ग्लोबल",
-
 hero:"नेपाल बाहिरका महत्वपूर्ण अन्तर्राष्ट्रिय समाचार",
-
 cards:[
-["भारत","भारतका प्रमुख समाचार","global"],
-["एशिया","एशियाली क्षेत्रका महत्वपूर्ण समाचार","global"],
-["विश्व","विश्वभरका पछिल्ला गतिविधि","global"]
+["भारत","भारतका प्रमुख समाचार"],
+["एशिया","एशियाली क्षेत्रका महत्वपूर्ण समाचार"],
+["विश्व","विश्वभरका पछिल्ला गतिविधि"]
 ]
-
 },
 
 about:{
-
 title:"हाम्रो बारेमा",
-
 hero:"खबर नेपाली सेवा बारे",
-
 cards:[
-["हाम्रो उद्देश्य","सत्य, तथ्य र निष्पक्ष समाचार जनतासम्म पुर्‍याउनु हाम्रो उद्देश्य हो।","about"],
-["हाम्रो सेवा","डिजिटल माध्यमबाट छिटो र विश्वसनीय समाचार उपलब्ध गराउने।","about"],
-["हाम्रो प्रतिबद्धता","पत्रकारिताको मूल्य र विश्वसनीयतालाई प्राथमिकता दिने।","about"]
+["हाम्रो उद्देश्य","सत्य, तथ्य र निष्पक्ष समाचार जनतासम्म पुर्‍याउनु हाम्रो उद्देश्य हो।"],
+["हाम्रो सेवा","डिजिटल माध्यमबाट छिटो र विश्वसनीय समाचार उपलब्ध गराउने।"],
+["हाम्रो प्रतिबद्धता","पत्रकारिताको मूल्य र विश्वसनीयतालाई प्राथमिकता दिने।"]
 ]
-
 },
 
 contact:{
-
 title:"सम्पर्क",
-
 hero:"खबर नेपाली सेवासँग सम्पर्क गर्नुहोस्",
-
 cards:[
-["सम्पर्क","समाचार तथा अन्य जानकारीका लागि हामीलाई सम्पर्क गर्न सक्नुहुन्छ।","contact"],
-["इमेल","info@khabarnepalisewa.com","contact"],
-["सामाजिक सञ्जाल","Facebook, YouTube तथा अन्य माध्यमबाट सम्पर्क गर्नुहोस्।","contact"]
+["सम्पर्क","समाचार तथा अन्य जानकारीका लागि हामीलाई सम्पर्क गर्न सक्नुहुन्छ।"],
+["इमेल","info@khabarnepalisewa.com"],
+["सामाजिक सञ्जाल","Facebook, YouTube तथा अन्य माध्यमबाट सम्पर्क गर्नुहोस्।"]
 ]
-
 },
 
 privacy:{
-
 title:"गोपनीयता नीति",
-
 hero:"खबर नेपाली सेवा गोपनीयता नीति",
-
 cards:[
-["गोपनीयता","पाठकको व्यक्तिगत जानकारीको सुरक्षा हाम्रो प्राथमिकता हो।","privacy"],
-["डेटा","प्रयोगकर्ताको आवश्यक जानकारी जिम्मेवारीपूर्वक प्रयोग गरिनेछ।","privacy"],
-["सुरक्षा","वेबसाइटको सुरक्षा कायम राख्न आवश्यक उपाय अपनाइनेछ।","privacy"]
+["गोपनीयता","पाठकको व्यक्तिगत जानकारीको सुरक्षा हाम्रो प्राथमिकता हो।"],
+["डेटा","प्रयोगकर्ताको आवश्यक जानकारी जिम्मेवारीपूर्वक प्रयोग गरिनेछ।"],
+["सुरक्षा","वेबसाइटको सुरक्षा कायम राख्न आवश्यक उपाय अपनाइनेछ।"]
 ]
-
 }
 
 };
 
 
-/* PAGE RENDER */
+/* =====================================
+   PAGE SHOW
+===================================== */
 
 function renderPage(){
 
     const params =
-        new URLSearchParams(window.location.search);
+        new URLSearchParams(
+            window.location.search
+        );
 
     let page =
         params.get("page") || "home";
@@ -858,7 +854,8 @@ function renderPage(){
         page="home";
     }
 
-    const data=pages[page];
+    const data = pages[page];
+
 
     /* ACTIVE MENU */
 
@@ -867,38 +864,43 @@ function renderPage(){
 
         link.classList.remove("active");
 
-        if(link.dataset.page===page){
+        if(link.dataset.page === page){
+
             link.classList.add("active");
+
         }
 
     });
 
 
-    /* PAGE HTML */
-
-    let html=`
+    let html = `
 
     <h1 class="page-title">
         ${data.title}
     </h1>
 
+
     <div class="search-box">
+
         <input
-            type="text"
             id="searchInput"
+            type="text"
             placeholder="${data.title} भित्र समाचार खोज्नुहोस्..."
         >
 
         <button onclick="searchNews()">
             🔍 खोज्नुहोस्
         </button>
+
     </div>
 
 
     <section class="hero">
 
         <div class="hero-main">
+
             <div>
+
                 <div class="category">
                     ${data.title}
                 </div>
@@ -910,35 +912,41 @@ function renderPage(){
                 <p>
                     खबर नेपाली सेवामा पढ्नुहोस्
                 </p>
+
             </div>
+
         </div>
 
 
         <div class="hero-side">
 
             <div class="side-card">
+
                 <div class="category">
                     ताजा अपडेट
                 </div>
 
                 <h3>
-                    देशका विभिन्न स्थानबाट महत्वपूर्ण समाचार
+                    आजका महत्वपूर्ण समाचारहरू
                 </h3>
 
                 <p>
                     पछिल्लो घटनाक्रमको अपडेट यहाँ पढ्नुहोस्।
                 </p>
+
             </div>
 
 
             <div class="side-card">
+
                 <div class="category">
                     विशेष
                 </div>
 
                 <h3>
-                    आजका प्रमुख विषयमा हाम्रो विशेष रिपोर्ट
+                    समसामयिक विषयमा हाम्रो विशेष रिपोर्ट
                 </h3>
+
             </div>
 
         </div>
@@ -968,7 +976,7 @@ function renderPage(){
 
             <div
                 class="card-img"
-                style="background-image:url('${images[index % images.length]}')">
+                style="background-image:url('${images[index]}')">
             </div>
 
             <div class="card-content">
@@ -1007,6 +1015,7 @@ function renderPage(){
                 पछिल्ला समाचार
             </h2>
 
+
             <div class="news-item">
 
                 <div
@@ -1015,6 +1024,7 @@ function renderPage(){
                 </div>
 
                 <div>
+
                     <div class="category">
                         ${data.title}
                     </div>
@@ -1026,6 +1036,7 @@ function renderPage(){
                     <p>
                         पछिल्लो घटनाक्रमबारे विस्तृत जानकारी...
                     </p>
+
                 </div>
 
             </div>
@@ -1039,6 +1050,7 @@ function renderPage(){
                 </div>
 
                 <div>
+
                     <div class="category">
                         ताजा समाचार
                     </div>
@@ -1050,6 +1062,7 @@ function renderPage(){
                     <p>
                         देश तथा विदेशका प्रमुख समाचारहरू...
                     </p>
+
                 </div>
 
             </div>
@@ -1063,6 +1076,7 @@ function renderPage(){
                 </div>
 
                 <div>
+
                     <div class="category">
                         विशेष
                     </div>
@@ -1074,6 +1088,7 @@ function renderPage(){
                     <p>
                         खबर नेपाली सेवाको विशेष रिपोर्ट...
                     </p>
+
                 </div>
 
             </div>
@@ -1122,18 +1137,16 @@ function renderPage(){
     `;
 
 
-    document.getElementById("content").innerHTML=html;
+    document.getElementById("content").innerHTML = html;
 
     document.title =
         data.title + " | खबर नेपाली सेवा";
-
 }
 
 
-renderPage();
-
-
-/* SEARCH */
+/* =====================================
+   SEARCH
+===================================== */
 
 function searchNews(){
 
@@ -1143,23 +1156,25 @@ function searchNews(){
     const keyword =
         input.value.toLowerCase();
 
-    const cards =
-        document.querySelectorAll(".card");
-
-    cards.forEach(card=>{
+    document.querySelectorAll(".card")
+    .forEach(card=>{
 
         const text =
             card.innerText.toLowerCase();
 
-        if(text.includes(keyword)){
-            card.style.display="";
-        }else{
-            card.style.display="none";
-        }
+        card.style.display =
+            text.includes(keyword)
+            ? ""
+            : "none";
 
     });
 
 }
+
+
+/* START */
+
+renderPage();
 
 </script>
 
