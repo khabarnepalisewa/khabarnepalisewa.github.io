@@ -1,1 +1,99 @@
-<!DOCTYPE html> <html lang="ne"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Khabar Nepali Sewa</title> <style> * { box-sizing: border-box; margin: 0; padding: 0; } body { font-family: Arial, sans-serif; background: #f4f4f4; color: #222; } header { background: #c90000; color: white; padding: 20px; text-align: center; } header h1 { font-size: 32px; } header p { margin-top: 8px; } nav { background: #222; padding: 12px; text-align: center; } nav a { color: white; text-decoration: none; margin: 0 12px; font-weight: bold; } .container { max-width: 1100px; margin: 25px auto; padding: 0 15px; } .breaking { background: white; padding: 15px; border-left: 5px solid #c90000; margin-bottom: 20px; } .breaking strong { color: #c90000; } .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; } .card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px #ccc; } .card img { width: 100%; height: 180px; object-fit: cover; } .card-content { padding: 15px; } .card h2 { font-size: 20px; margin-bottom: 10px; } .card p { color: #666; line-height: 1.6; } footer { margin-top: 40px; background: #222; color: white; text-align: center; padding: 25px; } @media (max-width: 768px) { .news-grid { grid-template-columns: 1fr; } nav a { display: inline-block; margin: 5px; } } </style> </head> <body> <header> <h1>खबर नेपाली सेवा</h1> <p>विश्वसनीय समाचार र जानकारीको डिजिटल प्लेटफर्म</p> </header> <nav> <a href="#">गृहपृष्ठ</a> <a href="#">समाचार</a> <a href="#">राजनीति</a> <a href="#">समाज</a> <a href="#">खेलकुद</a> <a href="#">प्रविधि</a> <a href="#">मनोरञ्जन</a> </nav> <div class="container"> <div class="breaking"> <strong>ताजा खबर:</strong> देश तथा विदेशका महत्वपूर्ण समाचारहरू यहाँ पढ्नुहोस्। </div> <div class="news-grid"> <div class="card"> <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c"> <div class="card-content"> <h2>आजका प्रमुख समाचार</h2> <p>देशभरका महत्वपूर्ण तथा नयाँ समाचारहरूको जानकारी।</p> </div> </div> <div class="card"> <img src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2"> <div class="card-content"> <h2>देश तथा राजनीति</h2> <p>नेपालको राजनीति र समसामयिक घटनाका जानकारी।</p> </div> </div> <div class="card"> <img src="https://images.unsplash.com/photo-1518770660439-4636190af475"> <div class="card-content"> <h2>प्रविधि</h2> <p>नयाँ प्रविधि, मोबाइल, इन्टरनेट र डिजिटल संसारका खबर।</p> </div> </div> </div> </div> <footer> <p>© 2026 Khabar Nepali Sewa. All Rights Reserved.</p> </footer> </body> </html>
+<!doctype html>
+<html lang="ne">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>खबर नेपाली सेवा | Khabar Nepali Sewa</title>
+<meta name="description" content="खबर नेपाली सेवा — नेपालको डिजिटल समाचार पोर्टल">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap');
+*{box-sizing:border-box}body{margin:0;background:#fff;color:#263b3b;font-family:"Noto Sans Devanagari",Arial,sans-serif}
+a{text-decoration:none;color:inherit}.wrap{max-width:1110px;margin:auto;padding:0 10px}
+.header{text-align:center;padding:18px 0 10px}.brand{display:inline-flex;align-items:center;gap:12px}.brand-mark{font-size:45px}.brand h1{font-size:48px;line-height:1;margin:0;color:#28756b;font-weight:700}.brand p{margin:3px 0 0;color:#80a9d0;font-size:15px}
+.tools{display:flex;align-items:center;justify-content:space-between;padding:10px 15px 14px;color:#246d65;font-size:14px}.tools-left,.tools-right{display:flex;align-items:center;gap:18px}.yt{background:#d83a3a;color:#fff;padding:7px 12px;border-radius:4px;font-weight:700;font-size:12px}.social{display:flex;gap:13px}.circle{width:22px;height:22px;border-radius:50%;background:#e5eeee;display:grid;place-items:center;font-size:11px;font-weight:700}
+nav{background:#24786d;color:#fff}.nav{display:flex;align-items:center;overflow:auto;white-space:nowrap}.nav a{padding:13px 14px;font-size:15px;font-weight:600}.nav a:hover,.nav a.active{background:#d83a3a}.search{margin-left:auto;font-size:23px;padding:0 12px;cursor:pointer}
+.ticker{margin:25px 0 16px;border:1px solid #ddd;display:flex;align-items:center;min-height:46px}.ticker b{background:#d83a3a;color:#fff;padding:9px 14px;white-space:nowrap}.ticker span{padding:0 14px;color:#425858;overflow:hidden;white-space:nowrap}
+.hero{border:1px solid #ddd;padding:25px 35px;text-align:center;margin-bottom:22px}.hero h2{font-size:43px;line-height:1.35;margin:0 0 12px;font-weight:600}.hero .meta{color:#d83a3a;font-size:14px}
+.ad{border:1px solid #ddd;min-height:120px;display:grid;place-items:center;margin:20px 0;color:#4c87bd;font-size:31px;font-weight:600}.ad small{display:block;color:#28756b;font-size:13px;text-align:center;margin-top:5px}
+.section-title{display:flex;align-items:center;gap:10px;margin:25px 0 12px;border-bottom:3px solid #28756b}.section-title h2{background:#28756b;color:#fff;font-size:20px;padding:7px 15px;margin:0}.grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:18px}.card{border:1px solid #ddd;background:#fff}.card img{width:100%;height:190px;object-fit:cover;display:block}.card.big img{height:270px}.card .body{padding:12px 14px}.card h3{font-size:20px;line-height:1.45;margin:0 0 5px}.card.big h3{font-size:27px}.meta{color:#7a8b8b;font-size:12px;margin-bottom:5px}.card p{color:#566666;margin:5px 0;font-size:14px}.read{color:#d83a3a;font-weight:700;font-size:13px}
+.columns{display:grid;grid-template-columns:1.7fr 1fr;gap:20px}.list{border-top:1px solid #ddd}.item{display:grid;grid-template-columns:145px 1fr;gap:13px;padding:13px 0;border-bottom:1px solid #ddd}.item img{width:145px;height:95px;object-fit:cover}.item h3{margin:0;font-size:18px;line-height:1.45}.sidebox{border:1px solid #ddd}.sidebox h3{margin:0;background:#28756b;color:#fff;padding:9px 12px}.sidebox .sideitem{padding:12px;border-bottom:1px solid #ddd;font-weight:600}
+footer{background:#263b3b;color:#e7eeee;margin-top:35px}.foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:25px;padding:28px 10px}.foot h3{color:#fff;margin-top:0}.foot a{display:block;margin:5px 0;color:#c9d8d8}.copy{text-align:center;border-top:1px solid #48605f;padding:12px;font-size:12px}
+#searchPanel{display:none;padding:10px 0}.searchbox{display:flex;gap:8px}.searchbox input{flex:1;padding:11px;border:1px solid #ccc}.searchbox button{background:#d83a3a;color:#fff;border:0;padding:0 16px}.hidden{display:none!important}
+@media(max-width:800px){.brand h1{font-size:36px}.tools{flex-direction:column;gap:10px}.hero{padding:18px}.hero h2{font-size:29px}.grid,.columns{grid-template-columns:1fr}.card.big img{height:220px}.foot{grid-template-columns:1fr}.nav a{padding:10px 11px;font-size:13px}.ticker span{font-size:13px}}
+@media(max-width:500px){.brand-mark{font-size:35px}.brand h1{font-size:29px}.brand p{font-size:11px}.hero h2{font-size:23px}.tools-left,.tools-right{gap:9px;font-size:12px}.grid{gap:12px}.item{grid-template-columns:105px 1fr}.item img{width:105px;height:80px}.item h3{font-size:15px}}
+</style>
+</head>
+<body>
+<header class="header">
+<div class="wrap">
+<div class="brand"><div class="brand-mark">📰</div><div><h1>खबर नेपाली सेवा</h1><p>नेपालको डिजिटल समाचार पोर्टल</p></div></div>
+</div>
+</header>
+
+<div class="wrap tools">
+<div class="tools-left"><a class="yt" href="#" target="_blank">YouTube</a><a href="#">SUBSCRIBE</a><a href="#">◉ &nbsp;LOG IN</a></div>
+<div class="tools-right"><div class="social"><span class="circle">f</span><span class="circle">𝕏</span><span class="circle">◎</span><span class="circle">♪</span></div><span>▣ <span id="date"></span></span><span>▦ युनिकोड</span><span>EN English</span></div>
+</div>
+
+<nav><div class="wrap nav">
+<a class="active" href="index.html">गृहपृष्ठ</a><a href="#featured">फिचर</a><a href="#politics">राजनीति</a><a href="#economy">बजार अर्थतन्त्र</a><a href="#nepalibrand">नेपाली ब्रान्ड</a><a href="#opinion">विचार</a><a href="#society">समाज</a><a href="#culture">कला</a><a href="#blog">ब्लग</a><a href="#sports">खेलकुद</a><a href="#global">ग्लोबल</a><a href="#other">अन्य स्टोरी</a><span class="search" onclick="toggleSearch()">⌕</span>
+</div></nav>
+
+<main class="wrap">
+<div id="searchPanel"><div class="searchbox"><input id="q" placeholder="समाचार खोज्नुहोस्..."><button onclick="searchNews()">खोज्नुहोस्</button></div></div>
+<div class="ticker"><b>ताजा खबर</b><span>देश तथा विदेशका महत्वपूर्ण समाचारहरू खबर नेपाली सेवामा पढ्नुहोस्।</span></div>
+
+<section class="hero">
+<div class="meta">मुख्य समाचार • <span id="time"></span></div>
+<h2>आजका प्रमुख समाचार र समसामयिक घटनाक्रम एकै ठाउँमा</h2>
+<a class="read" href="article.html">पूरा समाचार पढ्नुहोस् →</a>
+</section>
+
+<div class="ad"><div>तपाईंको विज्ञापन यहाँ<br><small>Advertisement Space</small></div></div>
+
+<div class="section-title" id="featured"><h2>फिचर</h2></div>
+<section class="grid">
+<article class="card big news" data-title="आजका प्रमुख समाचार">
+<img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=80" alt="समाचार">
+<div class="body"><div class="meta">समाचार • आज</div><h3>आजका प्रमुख समाचार: देशभरका महत्वपूर्ण घटनाक्रम</h3><p>ताजा जानकारी, समसामयिक विषय र महत्वपूर्ण घटनाहरूको समाचार।</p><a class="read" href="article.html">पूरा पढ्नुहोस् →</a></div>
+</article>
+<article class="card news" id="politics" data-title="राजनीति">
+<img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=700&q=80" alt="राजनीति">
+<div class="body"><div class="meta">राजनीति</div><h3>राजनीतिका नयाँ गतिविधि र महत्वपूर्ण अपडेट</h3><p>समसामयिक राजनीतिक घटनाक्रम।</p><a class="read" href="article.html">पढ्नुहोस् →</a></div>
+</article>
+<article class="card news" id="economy" data-title="बजार अर्थतन्त्र">
+<img src="https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=700&q=80" alt="अर्थतन्त्र">
+<div class="body"><div class="meta">बजार अर्थतन्त्र</div><h3>बजार, व्यापार र अर्थतन्त्रका नयाँ खबर</h3><p>अर्थतन्त्रसँग सम्बन्धित जानकारी।</p><a class="read" href="article.html">पढ्नुहोस् →</a></div>
+</article>
+</section>
+
+<div class="section-title" id="society"><h2>समाचार</h2></div>
+<div class="columns">
+<div class="list">
+<article class="item news" data-title="समाज"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=500&q=80" alt=""><div><div class="meta">समाज</div><h3>समाज र समुदायसँग जोडिएका महत्वपूर्ण विषय</h3><a class="read" href="article.html">पूरा पढ्नुहोस् →</a></div></article>
+<article class="item news" id="sports" data-title="खेलकुद"><img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=500&q=80" alt=""><div><div class="meta">खेलकुद</div><h3>खेलकुद जगतका नयाँ गतिविधि र अपडेट</h3><a class="read" href="article.html">पूरा पढ्नुहोस् →</a></div></article>
+<article class="item news" id="global" data-title="ग्लोबल"><img src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?auto=format&fit=crop&w=500&q=80" alt=""><div><div class="meta">ग्लोबल</div><h3>विश्वभरका महत्वपूर्ण घटनाक्रम</h3><a class="read" href="article.html">पूरा पढ्नुहोस् →</a></div></article>
+</div>
+<aside class="sidebox">
+<h3>लोकप्रिय</h3><div class="sideitem">१. आजका प्रमुख समाचार</div><div class="sideitem">२. राजनीतिक गतिविधि</div><div class="sideitem">३. प्रविधिका नयाँ अपडेट</div><div class="sideitem">४. खेलकुदका खबर</div>
+</aside>
+</div>
+
+<div class="section-title" id="tech"><h2>प्रविधि</h2></div>
+<section class="grid">
+<article class="card news" data-title="प्रविधि"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=700&q=80" alt=""><div class="body"><div class="meta">प्रविधि</div><h3>मोबाइल, इन्टरनेट, AI र डिजिटल संसारका खबर</h3><a class="read" href="article.html">पढ्नुहोस् →</a></div></article>
+<article class="card news" id="culture" data-title="कला संस्कृति"><img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=700&q=80" alt=""><div class="body"><div class="meta">कला</div><h3>कला, संस्कृति र सिर्जनाका कथा</h3><a class="read" href="article.html">पढ्नुहोस् →</a></div></article>
+<article class="card news" id="opinion" data-title="विचार"><img src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=700&q=80" alt=""><div class="body"><div class="meta">विचार</div><h3>समसामयिक विषयमा विचार र विश्लेषण</h3><a class="read" href="article.html">पढ्नुहोस् →</a></div></article>
+</section>
+</main>
+
+<footer><div class="wrap foot"><div><h3>खबर नेपाली सेवा</h3><p>नेपालको डिजिटल समाचार पोर्टल।</p><p>विश्वसनीय समाचार र जानकारी हाम्रो प्राथमिकता हो।</p></div><div><h3>लिङ्कहरू</h3><a href="#">हाम्रो बारेमा</a><a href="#">सम्पर्क</a><a href="#">गोपनीयता नीति</a></div><div><h3>हामीलाई फलो गर्नुहोस्</h3><a href="#">Facebook</a><a href="#">YouTube</a><a href="#">TikTok</a></div></div><div class="copy">© 2026 Khabar Nepali Sewa. All Rights Reserved.</div></footer>
+
+<script>
+function clock(){let d=new Date();document.getElementById('date').textContent=d.toLocaleDateString('ne-NP');document.getElementById('time').textContent=d.toLocaleTimeString('ne-NP',{hour:'2-digit',minute:'2-digit'});}
+clock();setInterval(clock,1000);
+function toggleSearch(){let p=document.getElementById('searchPanel');p.style.display=p.style.display==='block'?'none':'block';if(p.style.display==='block')document.getElementById('q').focus();}
+function searchNews(){let q=document.getElementById('q').value.trim().toLowerCase();document.querySelectorAll('.news').forEach(x=>{let t=(x.dataset.title+' '+x.innerText).toLowerCase();x.classList.toggle('hidden',q&&!t.includes(q));});}
+document.getElementById('q').addEventListener('input',searchNews);
+</script>
+</body></html>
