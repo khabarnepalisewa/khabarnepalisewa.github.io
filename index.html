@@ -2,568 +2,100 @@
 <html lang="ne">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>खबर नेपाली सेवा</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#087f3f">
+<title>खबर नेपाली सेवा | ताजा समाचार</title>
+<meta name="description" content="खबर नेपाली सेवा — ताजा, सत्य र निष्पक्ष नेपाली समाचार।">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-874WW7ZMBD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-874WW7ZMBD');
+</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
 <style>
-*{
-  box-sizing:border-box;
-}
-
-body{
-  margin:0;
-  font-family:Arial,"Noto Sans Devanagari",sans-serif;
-  background:#f5f7f8;
-  color:#222;
-}
-
-.top{
-  background:#087f3f;
-  color:white;
-  padding:8px 5%;
-  font-size:14px;
-}
-
-.header{
-  background:white;
-  padding:20px 5%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-}
-
-.logo{
-  font-size:38px;
-  font-weight:bold;
-  color:#087f3f;
-}
-
-.logo span{
-  color:#d71920;
-}
-
-.tagline{
-  color:#1267a5;
-  margin-top:5px;
-}
-
-.clock{
-  font-weight:bold;
-  color:#087f3f;
-}
-
-nav{
-  background:#087f3f;
-  display:flex;
-  flex-wrap:wrap;
-  padding:0 5%;
-}
-
-nav a{
-  color:white;
-  text-decoration:none;
-  padding:14px 17px;
-  font-weight:bold;
-}
-
-nav a:hover{
-  background:#d71920;
-}
-
-.container{
-  width:90%;
-  max-width:1200px;
-  margin:25px auto;
-}
-
-.breaking{
-  background:#d71920;
-  color:white;
-  padding:12px 15px;
-  border-radius:5px;
-  margin-bottom:25px;
-  font-weight:bold;
-}
-
-.title{
-  font-size:30px;
-  color:#087f3f;
-  border-left:6px solid #d71920;
-  padding-left:12px;
-  margin:30px 0 20px;
-}
-
-.news-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
-}
-
-.news-card{
-  background:white;
-  border-radius:10px;
-  overflow:hidden;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
-  transition:.2s;
-}
-
-.news-card:hover{
-  transform:translateY(-3px);
-}
-
-.news-card img{
-  width:100%;
-  height:210px;
-  object-fit:cover;
-}
-
-.news-body{
-  padding:16px;
-}
-
-.category{
-  color:#d71920;
-  font-size:14px;
-  font-weight:bold;
-}
-
-.news-card h2{
-  font-size:21px;
-  margin:8px 0;
-  line-height:1.5;
-}
-
-.news-card p{
-  color:#555;
-  line-height:1.7;
-}
-
-.meta{
-  font-size:13px;
-  color:#777;
-  margin-top:12px;
-}
-
-.read{
-  display:inline-block;
-  background:#087f3f;
-  color:white;
-  padding:8px 14px;
-  border-radius:5px;
-  text-decoration:none;
-  margin-top:10px;
-}
-
-.loading{
-  text-align:center;
-  padding:40px;
-  font-size:20px;
-}
-
-.error{
-  background:#ffe0e0;
-  color:#b00000;
-  padding:15px;
-  border-radius:6px;
-}
-
-.empty{
-  background:white;
-  padding:40px;
-  text-align:center;
-  border-radius:10px;
-}
-
-footer{
-  margin-top:50px;
-  background:#087f3f;
-  color:white;
-  padding:30px 5%;
-  text-align:center;
-}
-
-@media(max-width:800px){
-  .header{
-    flex-direction:column;
-    text-align:center;
-  }
-
-  .logo{
-    font-size:30px;
-  }
-
-  .news-grid{
-    grid-template-columns:1fr;
-  }
-
-  nav a{
-    padding:10px 12px;
-    font-size:14px;
-  }
-}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Devanagari",sans-serif;background:#f5f7f8;color:#222}
+.top{background:#087f3f;color:#fff;padding:8px 5%;font-size:14px}
+.header{background:#fff;padding:20px 5%;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{font-size:38px;font-weight:bold;color:#087f3f}.logo span{color:#d71920}.tagline{color:#1267a5;margin-top:5px}.clock{font-weight:bold;color:#087f3f}
+nav{background:#087f3f;display:flex;flex-wrap:wrap;padding:0 5%}nav a{color:#fff;text-decoration:none;padding:14px 17px;font-weight:bold}nav a:hover,nav a.active{background:#d71920}
+.container{width:90%;max-width:1200px;margin:25px auto}.breaking{background:#d71920;color:#fff;padding:12px 15px;border-radius:5px;margin-bottom:25px;font-weight:bold}
+.title{font-size:30px;color:#087f3f;border-left:6px solid #d71920;padding-left:12px;margin:30px 0 20px}
+.news-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.news-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px #00000014;transition:.2s}.news-card:hover{transform:translateY(-3px)}
+.news-card img{width:100%;height:210px;object-fit:cover;background:#e8eeea}.news-body{padding:16px}.category{color:#d71920;font-size:14px;font-weight:bold}.news-card h2{font-size:21px;margin:8px 0;line-height:1.5}.news-card h2 a{color:inherit;text-decoration:none}.news-card p{color:#555;line-height:1.7}.meta{font-size:13px;color:#777;margin-top:12px}
+.read{display:inline-block;background:#087f3f;color:#fff;padding:9px 14px;border-radius:5px;text-decoration:none;margin-top:10px}.loading,.empty{background:#fff;text-align:center;padding:35px;border-radius:10px;grid-column:1/-1}.error{background:#ffe0e0;color:#9a0000;padding:15px;border-radius:6px;grid-column:1/-1}
+footer{margin-top:50px;background:#087f3f;color:#fff;padding:30px 5%;text-align:center}footer a{color:white}
+@media(max-width:850px){.news-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.logo{font-size:30px}}
+@media(max-width:600px){.header{flex-direction:column;text-align:center}.news-grid{grid-template-columns:1fr}.title{font-size:25px}nav{padding:0 2%}nav a{padding:10px;font-size:13px}.container{width:94%}}
 </style>
 </head>
-
 <body>
-
-<div class="top">
-  आजको समाचार | खबर नेपाली सेवा
-</div>
-
+<div class="top">आजको समाचार | खबर नेपाली सेवा</div>
 <header class="header">
-
-  <div>
-    <div class="logo">
-      खबर <span>नेपाली सेवा</span>
-    </div>
-
-    <div class="tagline">
-      सत्य, तथ्य र निष्पक्ष समाचार
-    </div>
-  </div>
-
+  <div><div class="logo">खबर <span>नेपाली सेवा</span></div><div class="tagline">सत्य, तथ्य र निष्पक्ष समाचार</div></div>
   <div class="clock" id="clock"></div>
-
 </header>
-
-<nav>
-  <a href="index.html">गृहपृष्ठ</a>
-  <a href="index.html?page=politics">राजनीति</a>
-  <a href="index.html?page=economy">अर्थतन्त्र</a>
-  <a href="index.html?page=society">समाज</a>
-  <a href="index.html?page=culture">कला/संस्कृति</a>
-  <a href="index.html?page=sports">खेलकुद</a>
-  <a href="index.html?page=technology">प्रविधि</a>
-  <a href="index.html?page=global">विश्व</a>
+<nav id="nav">
+  <a href="index.html" data-page="all">गृहपृष्ठ</a>
+  <a href="index.html?page=politics" data-page="politics">राजनीति</a>
+  <a href="index.html?page=economy" data-page="economy">अर्थतन्त्र</a>
+  <a href="index.html?page=society" data-page="society">समाज</a>
+  <a href="index.html?page=culture" data-page="culture">कला/संस्कृति</a>
+  <a href="index.html?page=sports" data-page="sports">खेलकुद</a>
+  <a href="index.html?page=technology" data-page="technology">प्रविधि</a>
+  <a href="index.html?page=global" data-page="global">विश्व</a>
+  <a href="index.html?page=feature" data-page="feature">फिचर</a>
 </nav>
-
 <main class="container">
-
-  <div class="breaking">
-    🔴 ब्रेकिङ समाचार : खबर नेपाली सेवामा स्वागत छ
-  </div>
-
-  <h1 class="title">
-    📰 पछिल्ला समाचार
-  </h1>
-
-  <div id="newsContainer" class="news-grid">
-    <div class="loading">
-      समाचार लोड हुँदैछ...
-    </div>
-  </div>
-
+  <div class="breaking">🔴 ब्रेकिङ समाचार: <span id="ticker">खबर नेपाली सेवामा स्वागत छ</span></div>
+  <h1 class="title" id="pageTitle">📰 पछिल्ला समाचार</h1>
+  <div id="newsContainer" class="news-grid"><div class="loading">समाचार लोड हुँदैछ...</div></div>
 </main>
-
-<footer>
-  <h2>खबर नेपाली सेवा</h2>
-  <p>सत्य, तथ्य र निष्पक्ष समाचार</p>
-  <p>© २०८३ खबर नेपाली सेवा</p>
-</footer>
-
+<footer><h2>खबर नेपाली सेवा</h2><p>सत्य, तथ्य र निष्पक्ष समाचार</p><p><a href="admin.html">Admin Panel</a></p><p>© <span id="year"></span> खबर नेपाली सेवा</p></footer>
 <script>
-
-/* ================================
-   SUPABASE CONNECTION
-================================ */
-
-const SUPABASE_URL =
-"https://wrilgmjnoyqvwaohljut.supabase.co";
-
-const SUPABASE_KEY =
-"sb_publishable_Xd-dyWiHHjnd9bbE1sZuxw_TRYuX4H3";
-
-const supabaseClient =
-supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_KEY
-);
-
-
-/* ================================
-   CLOCK
-================================ */
-
-function updateClock(){
-
-  const now = new Date();
-
-  document.getElementById("clock").innerText =
-    now.toLocaleString("ne-NP",{
-      dateStyle:"medium",
-      timeStyle:"medium"
-    });
-
+const SUPABASE_URL="https://wrilgmjnoyqvwaohljut.supabase.co";
+const SUPABASE_KEY="sb_publishable_Xd-dyWiHHjnd9bbE1sZuxw_TRYuX4H3";
+const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const labels={all:"पछिल्ला समाचार",politics:"राजनीति",economy:"अर्थतन्त्र",society:"समाज",culture:"कला/संस्कृति",sports:"खेलकुद",technology:"प्रविधि",global:"विश्व",feature:"फिचर"};
+const categoryAliases={
+ politics:["राजनीति","politics"],
+ economy:["अर्थतन्त्र","बजार अर्थतन्त्र","अर्थव्यवस्था","economy"],
+ society:["समाज","society"],
+ culture:["कला","कला/संस्कृति","कला/ संस्कृति","संस्कृति","culture"],
+ sports:["खेलकुद","खेल","sports"],
+ technology:["प्रविधि","technology"],
+ global:["ग्लोबल","विश्व","अन्तर्राष्ट्रिय","global"],
+ feature:["फिचर","feature"]
+};
+const currentPage=new URLSearchParams(location.search).get("page")||"all";
+document.getElementById("pageTitle").textContent="📰 "+(labels[currentPage]||labels.all)+" समाचार";
+document.getElementById("year").textContent=new Date().getFullYear();
+document.querySelectorAll("#nav a").forEach(a=>{if(a.dataset.page===currentPage)a.classList.add("active")});
+function updateClock(){document.getElementById("clock").textContent=new Date().toLocaleString("ne-NP",{dateStyle:"medium",timeStyle:"medium"})}
+updateClock();setInterval(updateClock,1000);
+function escapeHtml(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function formatDate(value){if(!value)return "";const d=new Date(value);return Number.isNaN(d.getTime())?"":d.toLocaleString("ne-NP",{dateStyle:"medium",timeStyle:"short"})}
+function categoryMatches(value,page){const aliases=categoryAliases[page]||[];return aliases.some(x=>x.trim().toLocaleLowerCase()===String(value||"").trim().toLocaleLowerCase())}
+function renderCard(n){
+ const image=n.image_url?`<a href="article.html?id=${encodeURIComponent(n.id)}"><img src="${escapeHtml(n.image_url)}" alt="${escapeHtml(n.title)}" loading="lazy"></a>`:"";
+ const content=String(n.content||"").trim();const summary=content.length>180?content.slice(0,180)+"…":content;
+ return `<article class="news-card">${image}<div class="news-body"><div class="category">${escapeHtml(n.category||"समाचार")}</div><h2><a href="article.html?id=${encodeURIComponent(n.id)}">${escapeHtml(n.title)}</a></h2><p>${escapeHtml(summary)}</p><div class="meta">✍️ ${escapeHtml(n.author||"खबर नेपाली सेवा")}</div><div class="meta">🕐 ${escapeHtml(formatDate(n.created_at))}</div><a class="read" href="article.html?id=${encodeURIComponent(n.id)}">पूरा समाचार पढ्नुहोस् →</a></div></article>`;
 }
-
-updateClock();
-
-setInterval(updateClock,1000);
-
-
-/* ================================
-   LOAD NEWS
-================================ */
-
 async function loadNews(){
-
-  const container =
-    document.getElementById("newsContainer");
-
-  container.innerHTML =
-    '<div class="loading">समाचार लोड हुँदैछ...</div>';
-
-  const { data, error } =
-    await supabaseClient
-      .from("news")
-      .select("*")
-      .eq("published",true)
-      .order("created_at",{ascending:false});
-
-  if(error){
-
-    console.error(error);
-
-    container.innerHTML = `
-      <div class="error">
-        समाचार लोड गर्न समस्या भयो।
-        <br>
-        ${error.message}
-      </div>
-    `;
-
-    return;
-  }
-
-
-  if(!data || data.length === 0){
-
-    container.innerHTML = `
-      <div class="empty">
-        <h2>अहिले कुनै समाचार प्रकाशित भएको छैन।</h2>
-        <p>Admin Panel बाट पहिलो समाचार Publish गर्नुहोस्।</p>
-      </div>
-    `;
-
-    return;
-  }
-
-
-  container.innerHTML = "";
-
-
-  data.forEach(news => {
-
-    const card =
-      document.createElement("article");
-
-    card.className = "news-card";
-
-
-    const image =
-      news.image_url
-      ? `<img src="${news.image_url}" alt="${escapeHtml(news.title)}">`
-      : "";
-
-
-    const content =
-      news.content
-      ? news.content.substring(0,180) + "..."
-      : "";
-
-
-    card.innerHTML = `
-
-      ${image}
-
-      <div class="news-body">
-
-        <div class="category">
-          ${escapeHtml(news.category || "समाचार")}
-        </div>
-
-        <h2>
-          ${escapeHtml(news.title)}
-        </h2>
-
-        <p>
-          ${escapeHtml(content)}
-        </p>
-
-        <div class="meta">
-          ✍️ ${escapeHtml(news.author || "खबर नेपाली सेवा")}
-        </div>
-
-        <div class="meta">
-          🕐 ${formatDate(news.created_at)}
-        </div>
-
-        <a
-          class="read"
-          href="javascript:void(0)"
-          onclick="showNews(${news.id})"
-        >
-          पूरा समाचार पढ्नुहोस् →
-        </a>
-
-      </div>
-
-    `;
-
-    container.appendChild(card);
-
-  });
-
+ const container=document.getElementById("newsContainer");
+ container.innerHTML='<div class="loading">समाचार लोड हुँदैछ...</div>';
+ try{
+  const {data,error}=await supabaseClient.from("news").select("id,title,category,image_url,content,author,created_at,published").eq("published",true).order("created_at",{ascending:false}).limit(100);
+  if(error)throw error;
+  let news=data||[];
+  if(categoryAliases[currentPage])news=news.filter(n=>categoryMatches(n.category,currentPage));
+  if(!news.length){container.innerHTML=`<div class="empty"><h2>यस श्रेणीमा समाचार छैन।</h2><p>अर्को श्रेणी छान्नुहोस् वा पछि फेरि हेर्नुहोस्।</p><a class="read" href="index.html">सबै समाचार</a></div>`;document.getElementById("ticker").textContent="अहिले ताजा समाचार उपलब्ध छैन";return}
+  container.innerHTML=news.map(renderCard).join("");
+  document.getElementById("ticker").textContent=news.slice(0,5).map(n=>n.title).join(" • ");
+ }catch(e){console.error(e);container.innerHTML=`<div class="error">समाचार लोड गर्न समस्या भयो। Supabase connection/RLS जाँच गर्नुहोस्।<br>${escapeHtml(e.message)}</div>`}
 }
-
-
-/* ================================
-   FULL NEWS
-================================ */
-
-async function showNews(id){
-
-  const { data, error } =
-    await supabaseClient
-      .from("news")
-      .select("*")
-      .eq("id",id)
-      .single();
-
-
-  if(error){
-
-    alert("समाचार खोल्न समस्या भयो।");
-
-    return;
-  }
-
-
-  const container =
-    document.getElementById("newsContainer");
-
-
-  container.innerHTML = `
-
-    <article class="news-card"
-      style="grid-column:1/-1">
-
-      ${
-        data.image_url
-        ? `<img
-            src="${data.image_url}"
-            style="height:auto;max-height:600px"
-            alt="${escapeHtml(data.title)}"
-          >`
-        : ""
-      }
-
-      <div class="news-body">
-
-        <div class="category">
-          ${escapeHtml(data.category || "समाचार")}
-        </div>
-
-        <h1>
-          ${escapeHtml(data.title)}
-        </h1>
-
-        <div class="meta">
-          ✍️ ${escapeHtml(data.author || "खबर नेपाली सेवा")}
-        </div>
-
-        <div class="meta">
-          🕐 ${formatDate(data.created_at)}
-        </div>
-
-        <hr>
-
-        <p style="
-          white-space:pre-line;
-          font-size:18px;
-          line-height:2;
-        ">
-          ${escapeHtml(data.content || "")}
-        </p>
-
-        <button
-          onclick="loadNews()"
-          style="
-            background:#087f3f;
-            color:white;
-            border:0;
-            padding:12px 20px;
-            border-radius:5px;
-            cursor:pointer;
-          "
-        >
-          ← सबै समाचार
-        </button>
-
-      </div>
-
-    </article>
-
-  `;
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* ================================
-   DATE
-================================ */
-
-function formatDate(date){
-
-  if(!date) return "";
-
-  return new Date(date).toLocaleString(
-    "ne-NP",
-    {
-      dateStyle:"medium",
-      timeStyle:"short"
-    }
-  );
-
-}
-
-
-/* ================================
-   SECURITY
-================================ */
-
-function escapeHtml(text){
-
-  if(text === null || text === undefined){
-    return "";
-  }
-
-  return String(text)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-/* ================================
-   START
-================================ */
-
 loadNews();
-
 </script>
-
 </body>
 </html>

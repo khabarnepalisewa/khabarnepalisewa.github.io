@@ -1,4 +1,47 @@
-<!doctype html><html lang="ne"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>आजका प्रमुख समाचार | खबर नेपाली सेवा</title>
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#087f3f">
+<title>समाचार | खबर नेपाली सेवा</title>
+<meta name="description" content="खबर नेपाली सेवामा पूरा समाचार पढ्नुहोस्।">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-874WW7ZMBD"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-874WW7ZMBD');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-body{margin:0;background:#f7f7f7;color:#243838;font-family:"Noto Sans Devanagari",Arial,sans-serif}header{background:#28756b;color:#fff;padding:20px;text-align:center}header h1{margin:0;font-size:34px}main{max-width:850px;background:#fff;margin:25px auto;padding:25px;box-shadow:0 2px 10px #0001}h2{font-size:38px;line-height:1.4}.meta{color:#d83a3a}p{font-size:18px;line-height:2;color:#4b5c5c}.back{display:inline-block;background:#d83a3a;color:#fff;padding:9px 15px;text-decoration:none}@media(max-width:600px){main{margin:12px;padding:18px}h2{font-size:27px}}
-</style></head><body><header><a href="index.html" style="color:#fff;text-decoration:none"><h1>खबर नेपाली सेवा</h1></a></header><main><div class="meta">मुख्य समाचार • आज</div><h2>आजका प्रमुख समाचार: देशभरका महत्वपूर्ण घटनाक्रम</h2><p>यो समाचार पेजको नमुना हो। यहाँ तपाईंले आफ्नो वास्तविक समाचारको शीर्षक, फोटो, मिति, लेखक र पूरा समाचार सामग्री राख्न सक्नुहुन्छ।</p><p>वास्तविक समाचार प्रकाशित गर्दा तथ्य जाँच गरी विश्वसनीय स्रोत र आवश्यक विवरणसहित सामग्री अपडेट गर्नुहोस्।</p><a class="back" href="index.html">← गृहपृष्ठमा फर्कनुहोस्</a></main></body></html>
+*{box-sizing:border-box}body{margin:0;background:#f5f7f8;color:#222;font-family:Arial,"Noto Sans Devanagari",sans-serif}.top{background:#087f3f;color:#fff;padding:16px 5%}.top a{color:#fff;text-decoration:none;font-weight:bold}.container{max-width:900px;margin:25px auto;padding:0 15px}.article{background:#fff;padding:clamp(16px,4vw,32px);border-radius:10px;box-shadow:0 2px 10px #00000010}.category{color:#d71920;font-weight:bold}.article h1{line-height:1.6;font-size:clamp(25px,4vw,36px)}.hero{width:100%;max-height:560px;object-fit:contain;background:#eef1ef;border-radius:8px}.meta{color:#777;font-size:14px;line-height:1.8}.content{font-size:18px;line-height:2;white-space:pre-wrap;overflow-wrap:anywhere}.share{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}.share a,.share button,.back{border:0;border-radius:6px;padding:11px 14px;background:#087f3f;color:#fff;text-decoration:none;cursor:pointer;font-size:15px}.share .wa{background:#168747}.share .fb{background:#1877f2}footer{text-align:center;padding:25px}footer a{color:#087f3f}
+</style>
+</head>
+<body>
+<div class="top"><a href="index.html">← खबर नेपाली सेवा</a></div>
+<main class="container"><article class="article" id="article"><p>समाचार लोड हुँदैछ...</p></article></main>
+<footer><a href="index.html">गृहपृष्ठमा फर्कनुहोस्</a></footer>
+<script>
+const SUPABASE_URL="https://wrilgmjnoyqvwaohljut.supabase.co";
+const SUPABASE_KEY="sb_publishable_Xd-dyWiHHjnd9bbE1sZuxw_TRYuX4H3";
+const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const article=document.getElementById("article");
+function escapeHtml(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function formatDate(value){if(!value)return "";const d=new Date(value);return Number.isNaN(d.getTime())?"":d.toLocaleString("ne-NP",{dateStyle:"medium",timeStyle:"short"})}
+async function loadArticle(){
+ const id=new URLSearchParams(location.search).get("id");
+ if(!id){article.innerHTML="<h2>समाचारको ID दिइएको छैन।</h2><a href='index.html'>गृहपृष्ठमा फर्कनुहोस्</a>";return}
+ try{
+  const {data:n,error}=await supabaseClient.from("news").select("id,title,category,image_url,content,author,created_at,published").eq("id",id).eq("published",true).maybeSingle();
+  if(error)throw error;
+  if(!n){article.innerHTML="<h2>समाचार भेटिएन वा प्रकाशित छैन।</h2><a href='index.html'>गृहपृष्ठमा फर्कनुहोस्</a>";return}
+  document.title=n.title+" | खबर नेपाली सेवा";
+  const url=location.href;
+  const image=n.image_url?`<img class="hero" src="${escapeHtml(n.image_url)}" alt="${escapeHtml(n.title)}">`:"";
+  article.innerHTML=`<div class="category">${escapeHtml(n.category||"समाचार")}</div><h1>${escapeHtml(n.title)}</h1><div class="meta">✍️ ${escapeHtml(n.author||"खबर नेपाली सेवा")} · ${escapeHtml(formatDate(n.created_at))}</div>${image}<div class="share"><a class="wa" target="_blank" rel="noopener noreferrer" href="https://wa.me/?text=${encodeURIComponent(n.title+" "+url)}">WhatsApp शेयर</a><a class="fb" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}">Facebook शेयर</a><button id="copyLink">लिंक कपी</button><button id="nativeShare">Share</button></div><div class="content">${escapeHtml(n.content||"")}</div><hr><a class="back" href="index.html">← सबै समाचार</a>`;
+  document.getElementById("copyLink").onclick=async()=>{try{await navigator.clipboard.writeText(url);alert("समाचारको लिंक कपी भयो।")}catch(e){prompt("लिंक कपी गर्नुहोस्:",url)}};
+  document.getElementById("nativeShare").onclick=async()=>{if(navigator.share){try{await navigator.share({title:n.title,text:n.title,url})}catch(e){}}else{try{await navigator.clipboard.writeText(url);alert("लिंक कपी भयो।")}catch(e){prompt("लिंक कपी गर्नुहोस्:",url)}}};
+ }catch(e){console.error(e);article.innerHTML=`<h2>समाचार लोड गर्न समस्या भयो।</h2><p>${escapeHtml(e.message)}</p><a href="index.html">गृहपृष्ठ</a>`}
+}
+loadArticle();
+</script>
+</body>
+</html>
